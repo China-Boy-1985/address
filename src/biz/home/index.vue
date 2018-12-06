@@ -71,7 +71,27 @@
         webSocket: null,
         labelPosition: 'top',
         intervalObject: null,
-        dataList: [],
+        dataList: [ {
+            "calluuid":"xxx",
+            "addrNodes":[
+                {
+                    "name":"省市区",
+                    "content":"安徽省合肥市蜀山区",
+                    "voice":"http://ip:port/xx.wav"
+                },{
+                    "name":"详细地址",
+                    "content":"创新产业园二期F5栋2楼",
+                    "voice":"http://ip:port/xx.wav"
+                }
+            ],
+            "address":{
+                "prov":"安徽省",
+                "city":"合肥市",
+                "adname":"蜀山区",
+                "location":"创新产业园二期"
+            },
+            "resttime":120
+        }],
         list: [],
         placeSearch: null,
         address: '',
@@ -265,6 +285,7 @@
     },
     mounted () {
       let _this = this
+      _this.mapTool()
       _this.clearIntervals()
       let cacheData = JSON.parse(window.localStorage.getItem('list'))
       if (cacheData) {
